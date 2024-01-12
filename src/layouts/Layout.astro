@@ -1,0 +1,105 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+		--background: 19, 21, 26;
+		--background-light: 35, 39, 43;
+	}
+
+	html {
+		font-family: system-ui, sans-serif;
+		background: rgb(var(--background));
+		background-size: 224px;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+	main {
+		margin: auto;
+		padding: 2rem 1rem;
+		width: calc(100% - 2rem);
+		max-width: 720px;
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+		text-align: center;
+	}
+	.list-style-none {
+		list-style: none;
+	}
+
+	/* Headings */
+	h1 {
+		font-size: 3rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin: .5rem 0 2rem;
+	}
+	h2 {
+		text-align: left;
+		margin: 0;
+		font-weight: 500;
+		font-size: 1.15rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	/* Background Effects */
+	.bg-hover-effect {
+		display: flex;
+		padding: 1px;
+		border-radius: 7px;
+		background-color: rgb(var(--background));
+		background-image: none;
+		background-size: 400%;
+		background-position: 100%;
+		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+	}
+	.bg-hover-effect:is(:hover, :focus-within) {
+		background-position: 0;
+		background-image: var(--accent-gradient);
+	}
+	.bg-hover-effect:is(:hover, :focus-within) h2 {
+		color: rgb(var(--accent-light));
+	}
+</style>

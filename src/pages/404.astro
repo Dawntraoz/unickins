@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page not found - Unickins" description="This page doesn't exist">
+	<main>
+    <h1>404</h1>
+		<p>Houston, Unickins has a problem, HELP!</p>
+    <p>
+      We couldn’t find that link.
+      <br />
+      Check the address or <a href="/" data-astro-prefetch>head back home</a>.
+    </p>
+	</main>
+</Layout>
+
+<style>
+a {
+  color: rgb(var(--accent-light));
+}
+</style>

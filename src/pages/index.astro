@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import siteConfig from "../data/site-config.ts";
+
+import LinkCard from '../components/LinkCard.astro';
+import LinkFeatured from '../components/LinkFeatured.astro';
+import LinkSocial from '../components/LinkSocial.astro';
+
+import featuredLinks from "../data/featured-links.ts"
+import cardLinks from "../data/card-links.ts"
+import socialLinks from "../data/social-links.ts"
+---
+
+<Layout
+	title={`${siteConfig.name} - Unickins`}
+	description={`The links where you can find the work and how to contact ${siteConfig.name}`}
+>
+	<main>
+		<img src="/favicon.ico" width="120" height="120" alt={`Profile picture from ${siteConfig.name}`}>
+		<h1 class="text-gradient">{`${siteConfig.name} links`}</h1>
+		<p class="instructions">{siteConfig.description}</p>
+		<ul role="list" class="link-featured-grid">
+			{
+				featuredLinks.map((link) => (
+					<LinkFeatured href={link.href} title={link.title} />
+				))
+			}
+		</ul>
+		<ul role="list" class="link-card-grid">
+			{
+				cardLinks.map((link) => (
+					<LinkCard href={link.href} title={link.title} />
+				))
+			}
+		</ul>
+		<footer>
+			<ul role="list" class="link-social-grid">
+				{
+					socialLinks.map((link) => (
+						<LinkSocial link={link} />
+					))
+				}
+			</ul>
+		</footer>
+	</main>
+</Layout>
+
+<style>
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		margin-bottom: 1rem;
+		border: 1px solid rgba(var(--accent-light), 25%);
+		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+	.instructions code {
+		font-size: 0.8em;
+		font-weight: bold;
+		background: rgba(var(--accent-light), 12%);
+		color: rgb(var(--accent-light));
+		border-radius: 4px;
+		padding: 0.3em 0.4em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent-light));
+	}
+
+	/* Grids */
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding: 0;
+	}
+	.link-featured-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		max-width: 75%;
+		margin: 0 auto;
+		gap: 2rem;
+		padding: 1rem 0;
+	}
+	.link-social-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+		gap: 2rem;
+		padding: 1rem 0;
+	}
+</style>

@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import openGraphScraper from "open-graph-scraper";
+
+interface Props {
+	href: string;
+	title?: string;
+}
+
+const { href, title } = Astro.props;
+
+const options = { url: href };
+const { result } = await openGraphScraper(options);
+---
+
+<li class="link-featured list-style-none bg-hover-effect">
+	<a href={href} target="_blank" rel="noopener noreferer">
+		{result.ogImage && <Image src={result.ogImage[0].url} alt={result.ogTitle ?? `${href} image`} width="240" height="126" />}
+		<h2>
+			{title ?? result.ogTitle}
+		</h2>
+	</a>
+</li>
+
+<style>
+	.link-featured > a {
+		width: 100%;
+		padding-bottom: calc(.5rem - 1px);
+		text-decoration: none;
+		border-radius: 8px;
+		color: white;
+		background-color: #23262d;
+		opacity: 0.8;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.link-featured > a > img {
+		border-radius: 4px 4px 0 0;
+		object-fit: cover;
+		width: 100%;
+		height: 100px;
+	}
+</style>

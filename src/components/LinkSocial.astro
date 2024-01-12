@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components'
+
+import type { SocialLink } from '../data/social-links.ts'
+
+interface Props {
+	link: SocialLink
+}
+
+const { link } = Astro.props;
+---
+
+<li class="list-style-none">
+	<a href={link.href} target="_blank" rel="noopener noreferer">
+		<span class="sr-only">{link.text}</span>
+		<Icon name={link.icon} size={32} aria-hidden="true" />
+	</a>
+</li>
+
+<style>
+[data-icon] {
+    font-size: 2rem;
+    color: white;
+}
+a:hover [data-icon] {
+  color: rgb(var(--accent-light));
+}
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+</style>
