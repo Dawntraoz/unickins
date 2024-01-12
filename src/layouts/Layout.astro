@@ -76,11 +76,15 @@ const { title, description } = Astro.props;
 		margin: .5rem 0 2rem;
 	}
 	h2 {
-		text-align: left;
 		margin: 0;
 		font-weight: 500;
-		font-size: 1.15rem;
+		font-size: 1rem;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	@media (min-width: 768px) {
+		h2 {
+			font-size: 1.15rem;
+		}
 	}
 
 	/* Background Effects */

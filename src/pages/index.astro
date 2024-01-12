@@ -73,24 +73,29 @@ import socialLinks from "../data/social-links.ts"
 	}
 
 	/* Grids */
+	.link-featured-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		margin: 0 auto;
+		gap: 1rem;
+		padding: 1rem 0;
+	}
+	@media (min-width: 768px) {
+		.link-featured-grid {
+			max-width: 75%;
+			gap: 2rem;
+		}
+	}
 	.link-card-grid {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 2rem;
 		padding: 0;
 	}
-	.link-featured-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		max-width: 75%;
-		margin: 0 auto;
-		gap: 2rem;
-		padding: 1rem 0;
-	}
 	.link-social-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-		gap: 2rem;
+		gap: 1rem;
 		padding: 1rem 0;
 	}
 </style>
