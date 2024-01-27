@@ -1,8 +1,9 @@
 ---
+import siteConfig from '../data/site-config.ts';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Page not found - Unickins" description="This page doesn't exist">
+<Layout title="Page not found - Unickins" description="This page doesn't exist" domain={`${siteConfig.domain}/404`}>
 	<main>
     <h1>404</h1>
 		<p>Houston, Unickins has a problem, HELP!</p>

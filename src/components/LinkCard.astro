@@ -15,7 +15,7 @@ const { result } = await openGraphScraper(options);
 
 <li class="link-card list-style-none bg-hover-effect">
 	<a href={href} target="_blank" rel="noopener noreferer">
-		{result.ogImage && <Image src={result.ogImage[0].url} alt={result.ogTitle ?? `${href} image`} width="80" height="42" />}
+		{result.ogImage && <Image src={result.ogImage[0].url} alt={result.ogTitle ?? `${href} image`} width="80" height="42" format="avif" />}
 		<h2>
 			{title ?? result.ogTitle}
 		</h2>

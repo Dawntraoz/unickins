@@ -14,9 +14,10 @@ import socialLinks from "../data/social-links.ts"
 <Layout
 	title={`${siteConfig.name} - Unickins`}
 	description={`The links where you can find the work and how to contact ${siteConfig.name}`}
+	domain={siteConfig.domain}
 >
 	<main>
-		<img src="/favicon.ico" width="120" height="120" alt={`Profile picture from ${siteConfig.name}`}>
+		<img src="/favicon.ico" width="120" height="120" alt={`Profile avatar from ${siteConfig.name}`}>
 		<h1 class="text-gradient">{`${siteConfig.name} links`}</h1>
 		<p class="instructions">{siteConfig.description}</p>
 		<ul role="list" class="link-featured-grid">

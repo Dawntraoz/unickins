@@ -2,20 +2,37 @@
 interface Props {
 	title: string;
 	description: string;
+	domain: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, domain } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+
 		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content={`https://${domain}`}>
+		<meta property="og:type" content="website">
+		<meta property="og:title" content={title}>
+		<meta property="og:description" content={description}>
+		<meta property="og:image" content="/og-image.png">
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="twitter:domain" content={domain}>
+		<meta property="twitter:url" content={`https://${domain}`}>
+		<meta name="twitter:title" content={title}>
+		<meta name="twitter:description" content={description}>
+		<meta name="twitter:image" content="/og-image.png">
 	</head>
 	<body>
 		<slot />
